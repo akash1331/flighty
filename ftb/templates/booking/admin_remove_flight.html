@@ -1,17 +1,21 @@
+<!DOCTYPE html>
 {% extends 'booking/base.html' %}
 
-{% block content %}
+<body>
+  {% block content %}
   <h2>Remove Flight</h2>
-  <p>Are you sure you want to remove the following flight?</p>
+  <p>Are you sure to remove the following flight?</p>
   <h3>{{ flight.flight_number }}</h3>
-  <p>Origin: {{ flight.origin }}</p>
-  <p>Destination: {{ flight.destination }}</p>
-  <p>Departure Date: {{ flight.departure_date }}</p>
-  <p>Departure Time: {{ flight.departure_time }}</p>
-  <p>Price: {{ flight.price }}</p>
-  <p>Available Seats: {{ flight.available_seats }}</p>
+  <p><b>Origin: </b>{{ flight.origin }}</p>
+  <p><b>Destination: </b>{{ flight.destination }}</p>
+  <p><b>Departure Date: </b>{{ flight.departure_date }}</p>
+  <p><b>Departure Time: </b>{{ flight.departure_time }}</p>
+  <p><b>Price:</b> {{ flight.price }}</p>
+  <p><b>Available Seats: </b>{{ flight.available_seats }}</p>
   <form method="post">
     {% csrf_token %}
-    <button type="submit">Confirm Removal</button>
+     <button type="submit" class="btn btn-secondary">Confirm Removal</button>
   </form>
 {% endblock %}
+</body>
+

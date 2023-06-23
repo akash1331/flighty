@@ -56,7 +56,4 @@ class Booking(models.Model):
     seat_number = models.CharField(max_length=10,null=True)
     username=models.CharField(max_length=200,null=True)
 
-    # def __str__(self):
-    #     return f"Booking #{self.pk} - {self.user.username}"
-
 

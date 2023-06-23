@@ -1,11 +1,19 @@
+<!DOCTYPE html>
 {% extends 'booking/base.html' %}
 
-{% block content %}
+<body>
+  {% block content %}
   <h2>User Register</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Register</button>
+    <button type="submit" class="btn btn-dark">Register</button>
   </form>
-  <p>Already have an account? <a href="{% url 'ftb:user_login' %}">Login here</a>.</p>
+  <p>Already have an account?
+  <button type="button" class="btn btn-secondary">
+    <a href="{% url 'ftb:user_login' %}" style="color: white;">Login here</a>
+  </button>
+</p>
 {% endblock %}
+
+</body>

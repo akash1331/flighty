@@ -1,26 +1,33 @@
-{% extends 'booking/base.html' %}
-
-{% block content %}
-  <h2>Available Flights</h2>
-  {% for flight in flights %}
-    <div>
-      <h3>{{ flight.flight_number }}</h3>
-      <p>Origin: {{ flight.origin }}</p>
-      <p>Destination: {{ flight.destination }}</p>
-      <p>Departure Date: {{ flight.departure_date }}</p>
-      <p>Departure Time: {{ flight.departure_time }}</p>
-      <p>Price: {{ flight.price }}</p>
-      <p>Available Seats: {{ flight.available_seats }}</p>
-      <a href="{% url 'ftb:flight_details' flight.id %}">View Details</a>
+<!DOCTYPE html>
+{% extends 'booking/base.html' %} {% block content %}
+<h2>Available Flights</h2>
+{% for flight in flights %}
+<div class="grid-container">
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">{{ flight.flight_number }}</h5>
+      <p class="card-text"><b>Origin: </b>{{ flight.origin }}</p>
+      <p class="card-text"><b>Destination: </b>{{ flight.destination }}</p>
+      <p class="card-text"><b>Departure Date: </b>{{ flight.departure_date }}</p>
+      <p class="card-text"><b>Departure Time: </b>{{ flight.departure_time }}</p>
+      <p class="card-text"><b>Price: </b>{{ flight.price }}</p>
+      <p class="card-text"><b>Available Seats: </b>{{ flight.available_seats }}</p>
+      <button type="button" class="btn btn-secondary">
+        <a href="{% url 'ftb:flight_details' flight.id %}" class="card-link">View Details</a>
+      </button>
       {% if user.is_authenticated %}
+      <button type="button" class="btn btn-secondary">
         <a href="{% url 'ftb:book_flight' flight.id %}">Book Flight</a>
-      {% endif %}
+      </button>
+      {% endif %} 
       {% if user.is_superuser %}
+      <button type="button" class="btn btn-secondary">
         <a href="{% url 'ftb:admin_remove_flight' flight.id %}">Remove Flight</a>
+      </button>
       {% endif %}
     </div>
-    <hr>
-  {% empty %}
-    <p>No flights available.</p>
-  {% endfor %}
-{% endblock %}
+  </div>
+</div>
+{% empty %}
+<p>No flights available.</p>
+{% endfor %} {% endblock %}

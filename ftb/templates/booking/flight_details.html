@@ -1,18 +1,26 @@
+<!DOCTYPE html>
 {% extends 'booking/base.html' %}
 
-{% block content %}
+<body>
+  {% block content %}
   <h2>Flight Details</h2>
   <h3>{{ flight.flight_number }}</h3>
-  <p>Origin: {{ flight.origin }}</p>
-  <p>Destination: {{ flight.destination }}</p>
-  <p>Departure Date: {{ flight.departure_date }}</p>
-  <p>Departure Time: {{ flight.departure_time }}</p>
-  <p>Price: {{ flight.price }}</p>
-  <p>Available Seats: {{ flight.available_seats }}</p>
+  <p><b>Origin:</b> {{ flight.origin }}</p>
+  <p><b>Destination:</b> {{ flight.destination }}</p>
+  <p><b>Departure Date:</b> {{ flight.departure_date }}</p>
+  <p><b>Departure Time:</b> {{ flight.departure_time }}</p>
+  <p><b>Price:</b> {{ flight.price }}</p>
+  <p><b>Available Seats:</b> {{ flight.available_seats }}</p>
   {% if user.is_authenticated %}
+  <button type="button" class="btn btn-secondary">
     <a href="{% url 'ftb:book_flight' flight.id %}">Book Flight</a>
+  </button>
   {% endif %}
   {% if user.is_superuser %}
+  <button type="button" class="btn btn-secondary">
     <a href="{% url 'ftb:admin_remove_flight' flight.id %}">Remove Flight</a>
+  </button>
   {% endif %}
 {% endblock %}
+
+</body>

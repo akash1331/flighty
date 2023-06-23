@@ -1,19 +1,5 @@
 from django.urls import path
-from ftb.views import (
-    user_login,
-    user_logout,
-    user_register,
-    flight_list,
-    flight_details,
-    book_flight,
-    admin_register,
-    admin_logout,
-    admin_add_flight,
-    admin_remove_flight,
-    my_booking,
-    admin_view_bookings,
-)
-
+from ftb.views import *
 app_name = 'ftb'
 
 urlpatterns = [

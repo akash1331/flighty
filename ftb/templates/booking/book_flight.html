@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends 'booking/base.html' %}
 
 {% block content %}
@@ -6,6 +7,6 @@
     {% csrf_token %}
     
     {{ form.as_p }}
-    <button type="submit">Book Now</button>
+    <button type="submit" class="btn btn-secondary">Book Now</button>
   </form>
 {% endblock %}
