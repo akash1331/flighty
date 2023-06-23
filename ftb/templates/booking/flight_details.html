@@ -1,0 +1,18 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+  <h2>Flight Details</h2>
+  <h3>{{ flight.flight_number }}</h3>
+  <p>Origin: {{ flight.origin }}</p>
+  <p>Destination: {{ flight.destination }}</p>
+  <p>Departure Date: {{ flight.departure_date }}</p>
+  <p>Departure Time: {{ flight.departure_time }}</p>
+  <p>Price: {{ flight.price }}</p>
+  <p>Available Seats: {{ flight.available_seats }}</p>
+  {% if user.is_authenticated %}
+    <a href="{% url 'ftb:book_flight' flight.id %}">Book Flight</a>
+  {% endif %}
+  {% if user.is_superuser %}
+    <a href="{% url 'ftb:admin_remove_flight' flight.id %}">Remove Flight</a>
+  {% endif %}
+{% endblock %}

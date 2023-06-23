@@ -1,0 +1,30 @@
+<!-- booking/admin_view_bookings.html -->
+{% extends 'booking/base.html' %}
+
+{% block content %}
+  <h1>All Bookings</h1>
+  {% if bookings %}
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Flight</th>
+          <th>Seat Number</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for booking in bookings %}
+          <tr>
+            <td>{{ booking.user }}</td>
+            <td>{{ booking.flight }}</td>
+            <td>{{ booking.seat_number }}</td>
+            <td>{{ booking.date }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No bookings found.</p>
+  {% endif %}
+{% endblock %}
