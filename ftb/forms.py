@@ -19,4 +19,4 @@ class FlightForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['flight','seat_number','username']
+        fields = ['flight','passenger_name','seat_number','username','booking_date']

@@ -13,3 +13,5 @@ class BookingAdminSite(admin.ModelAdmin):
 
 admin.site.register(Flight,FlightAdminSite)
 admin.site.register(Booking,BookingAdminSite)
+
+admin.site.site_header = 'Flighty Administrator'

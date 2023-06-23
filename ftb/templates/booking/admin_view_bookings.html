@@ -10,20 +10,20 @@
     <thead>
       <tr>
         <th>User</th>
-        <th>Passenger Name</th>
-        <th>Flight</th>
+        <th>Passenger username</th>
+        <th>Flight number</th>
         <th>Seat Number</th>
-        <th>Date</th>
+        <th>Booking Date</th>
       </tr>
     </thead>
     <tbody>
       {% for booking in bookings %}
       <tr>
         <td>{{ booking.userid }}</td>
-        <td>{{ booking.passenger_name }}</td>
+        <td>{{ booking.username }}</td>
         <td>{{ booking.flight }}</td>
         <td>{{ booking.seat_number }}</td>
-        <td>{{ booking.date }}</td>
+        <td>{{ booking.booking_date }}</td>
       </tr>
       {% endfor %}
     </tbody>

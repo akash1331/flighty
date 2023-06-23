@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser,Group,Permission,BaseUserManager,AbstractBaseUser
 import datetime
+from django.db.models.deletion import SET_NULL
 
 
 class UserManager(BaseUserManager):
@@ -39,6 +40,7 @@ class User(AbstractBaseUser):
     
 class Flight(models.Model):
     flight_number = models.CharField(max_length=10,null=True)
+    flight_name = models.CharField(max_length=100,null=True)
     origin = models.CharField(max_length=100,null=True)
     destination = models.CharField(max_length=100,null=True)
     departure_date = models.DateField(default=datetime.date.today)
@@ -48,6 +50,9 @@ class Flight(models.Model):
 
     def __str__(self):
         return self.flight_number
+    
+    # def __str__(self):
+    #     return self.flight_name
 
 class Booking(models.Model):
     userid = models.IntegerField(null=True)
@@ -55,5 +60,4 @@ class Booking(models.Model):
     passenger_name = models.CharField(max_length=100,null=True)
     seat_number = models.CharField(max_length=10,null=True)
     username=models.CharField(max_length=200,null=True)
-
-
+    booking_date = models.DateField(default=datetime.date.today)
