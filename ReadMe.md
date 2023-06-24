@@ -37,5 +37,10 @@ Searching flights:
 Note that logout for each type of user is given separately for their working in their specified dropdown menu.
 
 Use the default django admin to view and understand more:
+
+To login as admin, use the given credentials:
+- Username: admin
+- Password: admin
+
 http://127.0.0.1:8000/admin/     ---> local
 https://flighty-7iij.onrender.com/    ---> deployed on render
