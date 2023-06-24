@@ -57,19 +57,17 @@ def flight_details(request, flight_id):
 @login_required
 def book_flight(request, flight_id):
     flight = Flight.objects.get(pk=flight_id)
-    if flight.available_seats > 0:
+    flight.available_seats -= 1
+    flight.save()
+    print(flight.available_seats)
+    if flight.available_seats >= 0:
         User=get_user_model()
         form = BookingForm(request.POST)
         if form.is_valid():
             # flight.available_seats-=1
             booking = form.save(commit=False)
-    # Set any additional fields for the booking
             booking.userid =request.user.id
-
-    # Save the booking
             booking.save()
-    
-    # Optionally, you can display a success message
             messages.success(request, 'Flight booked successfully!')
             return redirect('ftb:flight_list')
         else:

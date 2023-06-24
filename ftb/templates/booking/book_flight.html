@@ -7,6 +7,10 @@
     {% csrf_token %}
     
     {{ form.as_p }}
+    <p><b>
+      Enter date in format: YYYY-MM-DD
+    </b>
+    </p>
     <button type="submit" class="btn btn-secondary">Book Now</button>
   </form>
 {% endblock %}
