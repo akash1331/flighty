@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
@@ -7,6 +7,8 @@ from .forms import CustomUserCreationForm, FlightForm,BookingForm
 from .models import Flight, Booking
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q # for search query
 
 
 def user_login(request):
@@ -59,6 +61,7 @@ def book_flight(request, flight_id):
         User=get_user_model()
         form = BookingForm(request.POST)
         if form.is_valid():
+            # flight.available_seats-=1
             booking = form.save(commit=False)
     # Set any additional fields for the booking
             booking.userid =request.user.id
@@ -120,3 +123,32 @@ def my_booking(request):
 def admin_view_bookings(request):
     bookings = Booking.objects.all()
     return render(request, 'booking/admin_view_bookings.html', {'bookings': bookings})
+
+
+
+# search query
+# class SearchResultsView(ListView):
+#     model = Flight
+#     template_name = 'booking/search_results.html'
+
+#     def get_queryset(self):  # new
+#         query = self.request.GET.get("q")
+#         object_list = Flight.objects.filter(
+#             Q(flight_number__icontains=query) | Q(flight_name__icontains=query) | Q(origin__icontains=query) | Q(destination__icontains=query) | Q(price__icontains=query) | Q(departure_date__icontains=query) | Q(departure_time__icontains=query) 
+#         )
+#         print(object_list)
+#         for i in object_list:
+#             print("helo",i)
+#         # print(type(object_list))
+#         return object_list
+
+# search query
+@login_required
+def search(request):
+    if request.method=="POST":
+        searched = request.POST['ques']
+        flights = Flight.objects.filter(departure_date__contains=searched)
+        print("hola",flights)
+        return render(request, 'booking/search_results.html',{'searched':searched , 'flights':flights})
+    else:
+        return HttpResponse("Flight you're looking for is not avaliable at present. Please come back later.")

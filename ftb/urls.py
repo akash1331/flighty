@@ -16,5 +16,8 @@ urlpatterns = [
     path('admin_add-flight/', admin_add_flight, name='admin_add_flight'),
     path('admin_remove-flight/<int:flight_id>/', admin_remove_flight, name='admin_remove_flight'),
     path('my-booking/',my_booking, name='my_booking'),
-     path('view-bookings/', admin_view_bookings, name='admin_view_bookings'),
+    path('view-bookings/', admin_view_bookings, name='admin_view_bookings'),
+    path('search/', search, name='search_results'),
+    # path('search/', SearchResultsView.as_view(), name="search_results"),
+
 ]

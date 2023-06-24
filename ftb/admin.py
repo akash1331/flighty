@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
 class FlightAdminSite(admin.ModelAdmin):
-    list_display = ('flight_number','origin','destination','departure_date','departure_time','available_seats','available_seats')
+    list_display = ('flight_number','flight_name','origin','destination','departure_date','departure_time','available_seats','available_seats')
 
 
 class BookingAdminSite(admin.ModelAdmin):

@@ -29,7 +29,11 @@ Login as Admin:
 - View all the bookings upto date
 - As an admin, can create another admin.
 
+Searching flights:
+- To search by date ---> YYYY-MM-DD is the format to search
+
 Note that logout for each type of user is given separately for their working.
 
 Use the default django admin to view and understand more:
-http://127.0.0.1:8000/admin/
+http://127.0.0.1:8000/admin/     ---> local
+https://flighty-7iij.onrender.com/    ---> deployed on render

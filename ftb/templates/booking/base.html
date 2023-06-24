@@ -85,8 +85,8 @@
             /* background: linear-gradient(45deg, rgb(125, 120, 120), rgb(155, 225, 248)); */
             background: white;
         }
-        
-        h6{
+
+        h6 {
             color: grey;
         }
 
@@ -116,7 +116,6 @@
             bottom: 0;
             z-index: -1;
         } */
-
     </style>
 
 
@@ -125,7 +124,7 @@
 
 <body>
 
-    
+
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -170,6 +169,14 @@
                         </ul>
                     </li>
                 </ul>
+
+                <!-- search bar -->
+                <form class="d-flex" action="{% url 'ftb:search_results' %}" method="POST" role="search" style="position: relative;left: 55%;">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search: YYYY-MM-DD" aria-label="Search" name="ques">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
             </div>
         </div>
     </nav>
